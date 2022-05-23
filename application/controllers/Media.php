@@ -43,12 +43,13 @@ class Media extends CI_Controller{
   public function getVwSumPerPeriode()
   {
     $getVwSumPerPeriode_get = json_decode(
-    $this -> curl -> simple_get 
-    (
-    $this->API.'/Payroll/getVwSumPerPeriode/', 
-    array('AR-KEY'=>$this->key)
-    ),
-    true);
+      $this -> curl -> simple_get 
+      (
+      $this->API.'/Payroll/getVwSumPerPeriode/', 
+      array('AR-KEY'=>$this->key)
+      ),
+      true
+    );
     $data['sumPeriode'] = null;
     if($getVwSumPerPeriode_get)
     {
@@ -69,11 +70,12 @@ class Media extends CI_Controller{
   function index()
   {
     $data = $this->getData();
-    //        print_r($data);
+    //print_r($data);
     $this->load->view('media', $data);
   }
 
-  function create(){
+  function create()
+  {
     if(isset($_POST['submit'])){
         
         $data = 
@@ -102,6 +104,6 @@ class Media extends CI_Controller{
     }else{
         $this->load->view('media?modul=masterBiaya');
     }
-}
+  }
 
 }

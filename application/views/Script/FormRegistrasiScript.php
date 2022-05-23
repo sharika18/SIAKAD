@@ -54,6 +54,7 @@ function setValueBiodataWali()
 }
 
 $(document).ready(function () {
+    //alert("aa")
     $("#divUkuranJilbab *").prop("disabled", true);
 });
 

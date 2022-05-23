@@ -1,16 +1,21 @@
 <div class="row">  
     <div class="col-sm-6">
         <div class="form-group">
-        <label>Nama Lengkap*</label>
-        <input type="text" id="inputNamaLengkapIbu" name="inputNamaLengkapIbu" required
-            class="form-control" placeholder="nama lengkap Ibu">
+        <label>Nomor Induk Kependudukan (NIK)*</label>
+            <div class="input-group mb-3">
+                <input type="number" onKeyPress="if(this.value.length==16) return false;" id="inputNIKIbu" name="inputNIKIbu"
+                    class="form-control" placeholder="NIK Ibu" required>
+                <div class="input-group-prepend">
+                    <button type="button" class="btn btn-info" id="btnNIKIbu">Check</button>
+                </div>
+            </div>
         </div>
     </div>
     <div class="col-sm-6">
         <div class="form-group">
-        <label>Nomor Induk Kependudukan (NIK)*</label>
-        <input type="number" onKeyPress="if(this.value.length==16) return false;" id="inputNIKIbu" name="inputNIKIbu"
-            class="form-control" placeholder="NIK Ibu" required>
+        <label>Nama Lengkap*</label>
+        <input type="text" id="inputNamaLengkapIbu" name="inputNamaLengkapIbu" required
+            class="form-control" placeholder="nama lengkap Ibu">
         </div>
     </div>
 </div>

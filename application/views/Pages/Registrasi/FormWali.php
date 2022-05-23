@@ -24,7 +24,7 @@
                     <div class="icheck-success d-inline">
                         <input type="radio" id="ckBioDataWali" name="ckBiodataWali" value="3" checked>
                         <label for="ckBioDataWali">
-                            <small><em>wali selain Ayah/Ibu</em></small>
+                            <small><em>wali selain Wali/Ibu</em></small>
                         </label>
                     </div>
                 </div>
@@ -37,16 +37,21 @@
 <div class="row">  
     <div class="col-sm-6">
         <div class="form-group">
-        <label>Nama Lengkap*</label>
-        <input type="text" id="inputNamaLengkapWali" name="inputNamaLengkapWali" required
-            class="form-control" placeholder="nama lengkap Wali">
+        <label>Nomor Induk Kependudukan (NIK)*</label>
+            <div class="input-group mb-3">
+                <input type="number" onKeyPress="if(this.value.length==16) return false;" id="inputNIKWali" name="inputNIKWali"
+                    class="form-control" placeholder="NIK Wali" required>
+                <div class="input-group-prepend">
+                    <button type="button" class="btn btn-info">Check</button>
+                </div>
+            </div>
         </div>
     </div>
     <div class="col-sm-6">
         <div class="form-group">
-        <label>Nomor Induk Kependudukan (NIK)*</label>
-        <input type="number" onKeyPress="if(this.value.length==16) return false;" id="inputNIKWali" name="inputNIKWali"
-            class="form-control" placeholder="NIK Wali" required>
+        <label>Nama Lengkap*</label>
+        <input type="text" id="inputNamaLengkapWali" name="inputNamaLengkapWali" required
+            class="form-control" placeholder="nama lengkap Wali">
         </div>
     </div>
 </div>

@@ -2,9 +2,10 @@
 //VALIDATION FUNCTION
 $(function () {
     $(".btnNext").click(function() {
-        if ($( "#formSubmit" ).valid()) {
-            stepper.next();
-          }
+        // if ($( "#formSubmit" ).valid()) {
+        //     stepper.next();
+        //   }
+        stepper.next();
     });
 
     $.validator.setDefaults({

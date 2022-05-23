@@ -20,3 +20,18 @@
                             'Rp 4.000.000 s/d Rp 5.000.000',
                             'Lebih dari Rp 5.000.000');
     
+    $izin = array
+    (
+        'Izin Tidak Sekolah' =>     
+        array
+        (
+            'Sakit', 'Tugas Pondok'
+        ),
+        'Izin Keluar Pondok' =>     
+        array
+        (
+            'Sakit', 'Kematian', 'Urusan Keluarga', 'Lainnya'
+        ),
+    );
+
+    //rint_r($izin[]);

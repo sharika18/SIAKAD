@@ -171,35 +171,78 @@
                     </p>
                   </a>
                   <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                      <a href="<?php echo base_url()?>Karyawan?modul=masterKaryawan&act=Tambah" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Karyawan</p>
-                      </a>
-                    </li>
-                    <!--
-                    <li class="nav-item">
-                      <a href="<?php echo base_url()?>biaya?modul=masterBiaya&act=Tambah" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Biaya</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="<?php echo base_url()?>biayadetail?modul=masterBiayaDetail&act=Tambah" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Biaya Detail</p>
-                      </a>
-                    </li>
-                    <li class="nav-item">
-                      <a href="<?php echo base_url()?>mahasiswa?modul=mahasiswa" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Mahasiswa</p>
-                      </a>
-                    </li>-->
+                    <?php
+                      $getMenuMaster_get = 
+                      json_decode
+                      (
+                        $this -> curl -> simple_get 
+                        (
+                          $API.'/Menu/getMenuBySubMenu/', 
+                          array('AR-KEY'=>'arrisalah123', 'SubMenu'=>'Master'), 
+                          array(CURLOPT_BUFFERSIZE => 10)
+                        ),
+                        true
+                      ); 
+                     
+                      $data['menu'] = null;
+                      if($getMenuMaster_get)
+                      {
+                        $data['menu'] = $getMenuMaster_get['data'];
+                        for ($i=0; $i< count($data['menu']); $i++)
+                        {?>
+                          <li class="nav-item">
+                            <a href="<?php echo base_url().$data['menu'][$i]['LinkMenu']?>" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p><?=$data['menu'][$i]['NamaMenu']?></p>
+                            </a>
+                          </li>
+                    <?php    
+                        }
+                      }
+                    ?>
                   </ul>
                 </li>
-                <!--
                 <li class="nav-item">
+                  <a href="#" class="nav-link">
+                    <i class="nav-icon fas fa-table"></i>
+                    <p>
+                      Activity
+                      <i class="fas fa-angle-left right"></i>
+                    </p>
+                  </a>
+                  <ul class="nav nav-treeview">
+                    <?php
+                      $getMenuMaster_get = 
+                      json_decode
+                      (
+                        $this -> curl -> simple_get 
+                        (
+                          $API.'/Menu/getMenuBySubMenu/', 
+                          array('AR-KEY'=>'arrisalah123', 'SubMenu'=>'Activity'), 
+                          array(CURLOPT_BUFFERSIZE => 10)
+                        ),
+                        true
+                      ); 
+                     
+                      $data['menu'] = null;
+                      if($getMenuMaster_get)
+                      {
+                        $data['menu'] = $getMenuMaster_get['data'];
+                        for ($i=0; $i< count($data['menu']); $i++)
+                        {?>
+                          <li class="nav-item">
+                            <a href="<?php echo base_url().$data['menu'][$i]['LinkMenu']?>" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
+                              <p><?=$data['menu'][$i]['NamaMenu']?></p>
+                            </a>
+                          </li>
+                    <?php    
+                        }
+                      }
+                    ?>
+                  </ul>
+                </li>
+                <!-- <li class="nav-item">
                   <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-table"></i>
                     <p>
@@ -233,24 +276,7 @@
                       </a>
                     </li>
                   </ul>
-                </li>-->
-                <li class="nav-item">
-                  <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-table"></i>
-                    <p>
-                      Finance
-                      <i class="fas fa-angle-left right"></i>
-                    </p>
-                  </a>
-                  <ul class="nav nav-treeview">
-                    <li class="nav-item">
-                      <a href="<?php echo base_url()?>Payroll?modul=financePayroll&act=Tambah" class="nav-link">
-                        <i class="far fa-circle nav-icon"></i>
-                        <p>Payroll</p>
-                      </a>
-                    </li>
-                  </ul>
-                </li>
+                </li> -->
             </ul>
           </nav>
 
