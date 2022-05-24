@@ -76,27 +76,27 @@ $("input[name='ckAlamatWali']").change(function(){
     } 
 });
 
-$("input[name='ckBiodataWali']").change(function(){
-    resetValues();
-    $("#divBiodataWali *").prop("disabled", false);
-    if($(this).val() == '1')
-    {
-        valuesBiodataAyah();
-        $("#divBiodataWali *").prop("disabled", false);
-    }
-    else if($(this).val() == '2')
-    {
-        valuesBiodataIbu();
-        $("#divBiodataWali *").prop("disabled", false);
-    }
+// $("input[name='ckBiodataWali']").change(function(){
+//     resetValues();
+//     $("#divBiodataWali *").prop("disabled", false);
+//     if($(this).val() == '1')
+//     {
+//         valuesBiodataAyah();
+//         $("#divBiodataWali *").prop("disabled", false);
+//     }
+//     else if($(this).val() == '2')
+//     {
+//         valuesBiodataIbu();
+//         $("#divBiodataWali *").prop("disabled", false);
+//     }
 
-    setValueBiodataWali();
-});
+//     setValueBiodataWali();
+// });
 
 $(function () {
     var selectedDateTanggalLahirSantri=document.getElementById("dateTanggalSantri").value;  
     $('#dateTanggalSantri').datetimepicker({
-        format: 'DD MMMM YYYY',
+        format: 'YYYY-MM-DD',
         date : selectedDateTanggalLahirSantri
     });
 

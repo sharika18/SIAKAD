@@ -39,7 +39,9 @@ class Login extends Email{
         $sessionArray = array (
           'id' => $login['data'][0]['userId'],
           'userEmail' => $login['data'][0]['email'],
-          'userName'  => $login['data'][0]['userName']
+          'userName'  => $login['data'][0]['userName'],
+          'NIK'  => $login['data'][0]['NIK'],
+          'Role'  => $login['data'][0]['Role']
         );
         $this->session->set_userdata('loggedIn', $sessionArray);
         redirect('media?modul=home');

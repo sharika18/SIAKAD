@@ -86,16 +86,15 @@
                 <table id="dgMasterSantri" class="table table-bordered table-striped">
                   <thead>
                   <tr>
-                    <th>ID</th>
                     <th>NIS</th>
                     <th>Nama Santri</th>
-                    <th>NIK Wali</th>
+                    <th>Nama Wali</th>
                     <th>Kelas</th>
                     <th>Asrama</th>
                     <th>Act</th>
                   </tr>
                   </thead>
-                  <tbody>
+                  <tbody id="bodyDgMasterSantri">
                   </tbody>
                 </table>
               </div>
@@ -112,159 +111,18 @@
   <!-- /.content-wrapper -->
   <?php 
     include dirname(__DIR__)."/../Common/AlertBoxDelete.php";
-    include dirname(__DIR__)."/../Common/AlertBoxSubmit.php";
+    include dirname(__DIR__)."/../Common/AlertBoxSubmitSantri.php";
     //include dirname(__DIR__)."/../Script/ScriptMasterSantri.php";  
     
     include dirname(__DIR__)."/../Script/FormRegistrasiScript.php";
     include dirname(__DIR__)."/../Script/formRegisterValidationScript.php";
+    include dirname(__DIR__)."/../Script/ScriptMasterSantri.php";
     $this->load->view('Common/Alert');
   ?>
 </div>
 <!-- ./wrapper -->
-<script type="text/javascript">
-  // $('#btnNIKAyah').on('click',function(){
-  //   var nikAyah = $('#inputNIKAyah').val();
-  //   var namaLengkap = '';
-  //   var tempatLahir = '';
-  //   var tanggalLahir = '';
-  //   var pendidikanTerakhir = '';
-  //   var pekerjaan = '';
-  //   var penghasilan = '';
-  //   var noHandphone = '';
-  //   $.ajax({
-  //     type  : 'ajax',
-  //     url   : ''+nikAyah,
-  //     async : true,
-  //     dataType : 'json',
-  //     success : function(data){
-  //         var html = '';
-  //         var i;
-  //         for(i=0; i<data.length; i++){
-  //             html += '<option value="'+data[i].NamaLengkap+'">'+data[i].NamaLengkap+'</option>';
-  //             namaLengkap += data[i].NamaLengkap;
-  //             tempatLahir += data[i].TempatLahir;
-  //             tanggalLahir += data[i].TanggalLahir;
-  //             pendidikanTerakhir += data[i].PendidikanTerakhir;
-  //             pekerjaan += data[i].Pekerjaan;
-  //             penghasilan += data[i].PenghasilanPerBulan;
-  //             noHandphone += data[i].NomorHandphone;
-  //         }
-  //         $('#inputNamaLengkapAyah').val(namaLengkap);
-  //         $('#inputTempatLahirAyah').val(tempatLahir);
-  //         $('#dateTanggalLahirAyah').val(tanggalLahir);
-  //         $('#selectPendidikanAyah').val(pendidikanTerakhir);
-  //         $('#selectPekerjaanAyah').val(pekerjaan);
-  //         $('#selectPenghasilanAyah').val(penghasilan);
-  //         $('#inputNomorHPAyah').val(noHandphone);
-  //     },
-  //     error : function(data){
-  //         $('#inputNamaLengkapAyah').val(namaLengkap);
-  //         $('#inputTempatLahirAyah').val(tempatLahir);
-  //         $('#dateTanggalLahirAyah').val(tanggalLahir);
-  //         $('#selectPendidikanAyah').val(pendidikanTerakhir);
-  //         $('#selectPekerjaanAyah').val(pekerjaan);
-  //         $('#selectPenghasilanAyah').val(penghasilan);
-  //         $('#inputNomorHPAyah').val(noHandphone);
-  //     }
-
-  //   });
-  // });
-
-    $(document).ready(function(){
-        $('#mydata').dataTable();
-        
-        function getOrangTuaByNIK(varChoice){
-          //var inputID = '#inputNIKAyah';
-          //ID
-          var inputID = '#inputNIK'+varChoice;
-          var namaID = '#inputNamaLengkap'+varChoice;
-          var tempatLahirID = '#inputTempatLahir'+varChoice;
-          var tanggalLahirID = '#dateTanggalLahir'+varChoice;
-          var pendidikanID = '#selectPendidikan'+varChoice;
-          var pekerjaanID = '#selectPekerjaan'+varChoice;
-          var penghasilanID = '#selectPenghasilan'+varChoice;
-          var handphoneID = '#inputNomorHP'+varChoice;
-
-          //SET VALUE
-          var nikAyah = $(inputID).val();
-          var namaLengkap = '';
-          var tempatLahir = '';
-          var tanggalLahir = '';
-          var pendidikanTerakhir = '';
-          var pekerjaan = '';
-          var penghasilan = '';
-          var noHandphone = '';
-          $.ajax({
-            type  : 'ajax',
-            url   : '<?php echo base_url('Santri/getOrangTuaByNIK/')?>'+nikAyah,
-            async : true,
-            dataType : 'json',
-            success : function(data){
-                var html = '';
-                var i;
-                for(i=0; i<data.length; i++){
-                    html += '<option value="'+data[i].NamaLengkap+'">'+data[i].NamaLengkap+'</option>';
-                    namaLengkap += data[i].NamaLengkap;
-                    tempatLahir += data[i].TempatLahir;
-                    tanggalLahir += data[i].TanggalLahir;
-                    pendidikanTerakhir += data[i].PendidikanTerakhir;
-                    pekerjaan += data[i].Pekerjaan;
-                    penghasilan += data[i].PenghasilanPerBulan;
-                    noHandphone += data[i].NomorHandphone;
-                }
-                $(namaID).val(namaLengkap);
-                $(tempatLahirID).val(tempatLahir);
-                $(tanggalLahirID).val(tanggalLahir);
-                $(pendidikanID).val(pendidikanTerakhir);
-                $(pekerjaanID).val(pekerjaan);
-                $(penghasilanID).val(penghasilan);
-                $(handphoneID).val(noHandphone);
-            },
-            error : function(data){
-                $(namaID).val(namaLengkap);
-                $(tempatLahirID).val(tempatLahir);
-                $(tanggalLahirID).val(tanggalLahir);
-                $(pendidikanID).val(pendidikanTerakhir);
-                $(pekerjaanID).val(pekerjaan);
-                $(penghasilanID).val(penghasilan);
-                $(handphoneID).val(noHandphone);
-            }
-
-          });
-        }
-        document.getElementById("btnNIKAyah").addEventListener("click", function(){getOrangTuaByNIK('Ayah');});
-        document.getElementById("btnNIKIbu").addEventListener("click", function(){getOrangTuaByNIK('Ibu');});
-        //function show all product
-        function show_product(){
-            $.ajax({
-                //alert(nikAyah);
-                type  : 'ajax',
-                url   : '<?php echo base_url('Santri/getOrangTuaByNIK/3276031012940004')?>',
-                async : true,
-                dataType : 'json',
-                success : function(data){
-                    var html = '';
-                    var namaLengkap = '';
-
-                    var i;
-                    for(i=0; i<data.length; i++){
-                        html += '<option value="'+data[i].NamaLengkap+'">'+data[i].NamaLengkap+'</option>';
-                        namaLengkap += data[i].NamaLengkap;
-                    }
-                    $('#selectUkuranBaju').html(html);
-                    //$('#inputNamaLengkapAyah').val(namaLengkap);
-                    //alert('a');
-                }
- 
-            });
-          // alert("a");
-          // var html = '';
-          // html += '<option value="0">koko</option>';
-          //           $('#selectAlasanIzin').append(html);
-        }
-    });
- 
-</script>
+<?php 
+  ?>
 </body>
 </html>
 

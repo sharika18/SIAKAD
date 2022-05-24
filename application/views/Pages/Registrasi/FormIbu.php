@@ -15,7 +15,7 @@
         <div class="form-group">
         <label>Nama Lengkap*</label>
         <input type="text" id="inputNamaLengkapIbu" name="inputNamaLengkapIbu" required
-            class="form-control" placeholder="nama lengkap Ibu">
+            class="form-control" placeholder="nama lengkap Ibu" pattern="[^']+">
         </div>
     </div>
 </div>
@@ -25,7 +25,7 @@
         <div class="form-group">
         <label>Tempat Lahir*</label>
         <input type="text" id="inputTempatLahirIbu" name="inputTempatLahirIbu"
-            class="form-control" placeholder="tempat lahir Ibu" required>
+            class="form-control" placeholder="tempat lahir Ibu" required pattern="[^']+">
         </div>
     </div>
     <div class="col-sm-6">

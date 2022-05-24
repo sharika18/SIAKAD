@@ -34,130 +34,151 @@
 </div>
 
 <div id="divBiodataWali">
-<div class="row">  
-    <div class="col-sm-6">
-        <div class="form-group">
-        <label>Nomor Induk Kependudukan (NIK)*</label>
-            <div class="input-group mb-3">
-                <input type="number" onKeyPress="if(this.value.length==16) return false;" id="inputNIKWali" name="inputNIKWali"
-                    class="form-control" placeholder="NIK Wali" required>
-                <div class="input-group-prepend">
-                    <button type="button" class="btn btn-info">Check</button>
+    <div class="row">  
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label>Nomor Induk Kependudukan (NIK)*</label>
+                <div class="input-group mb-3">
+                    <input type="number" onKeyPress="if(this.value.length==16) return false;" id="inputNIKWali" name="inputNIKWali"
+                        class="form-control" placeholder="NIK Wali" required>
+                    <div class="input-group-prepend">
+                        <button type="button" class="btn btn-info" id="btnNIKWali">Check</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="col-sm-6">
-        <div class="form-group">
-        <label>Nama Lengkap*</label>
-        <input type="text" id="inputNamaLengkapWali" name="inputNamaLengkapWali" required
-            class="form-control" placeholder="nama lengkap Wali">
-        </div>
-    </div>
-</div>
-<div class="row">  
-    <div class="col-sm-6">
-        <!-- text input -->
-        <div class="form-group">
-        <label>Tempat Lahir*</label>
-        <input type="text" id="inputTempatLahirWali" name="inputTempatLahirWali"
-            class="form-control" placeholder="tempat lahir Wali" required>
-        </div>
-    </div>
-    <div class="col-sm-6">
-        <div class="form-group">
-        <label>Tanggal Lahir*</label>
-        <div class="input-group date" data-target-input="nearest">
-            <input type="text" id="dateTanggalLahirWali" name="dateTanggalLahirWali"
-                class="form-control datetimepicker-input" data-target="#dateTanggalLahirWali" required/>
-            <div class="input-group-append" data-target="#dateTanggalLahirWali" data-toggle="datetimepicker">
-                <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+        <div class="col-sm-6">
+            <div class="form-group">
+            <label>Nama Lengkap*</label>
+            <input type="text" id="inputNamaLengkapWali" name="inputNamaLengkapWali" required
+                class="form-control" placeholder="nama lengkap Wali" pattern="[^']+">
             </div>
         </div>
+    </div>
+    <div class="row">  
+        <div class="col-sm-6">
+            <!-- text input -->
+            <div class="form-group">
+            <label>Tempat Lahir*</label>
+            <input type="text" id="inputTempatLahirWali" name="inputTempatLahirWali"
+                class="form-control" placeholder="tempat lahir Wali" required pattern="[^']+">
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+            <label>Tanggal Lahir*</label>
+            <div class="input-group date" data-target-input="nearest">
+                <input type="text" id="dateTanggalLahirWali" name="dateTanggalLahirWali"
+                    class="form-control datetimepicker-input" data-target="#dateTanggalLahirWali" required/>
+                <div class="input-group-append" data-target="#dateTanggalLahirWali" data-toggle="datetimepicker">
+                    <div class="input-group-text"><i class="fa fa-calendar"></i></div>
+                </div>
+            </div>
+            </div>
         </div>
     </div>
-</div>
-<div class="row">
-    <div class="col-sm-6">
-        <!-- text input -->
-        <div class="form-group">
-        <label>Pendidikan Terakhir Wali</label>
-        <select class="custom-select" id="selectPendidikanWali" name="selectPendidikanWali" required>
-            <option value="">--Pilih Pendidikan Terakhir--</option>
-            <?php
-            foreach($pendidikanTerakhirList as $listPendidikanTerakhir)
-            {
-                $selected = "";
-                if("" == $listPendidikanTerakhir)
+    <div class="row">
+        <div class="col-sm-6">
+            <!-- text input -->
+            <div class="form-group">
+            <label>Pendidikan Terakhir Wali</label>
+            <select class="custom-select" id="selectPendidikanWali" name="selectPendidikanWali" required>
+                <option value="">--Pilih Pendidikan Terakhir--</option>
+                <?php
+                foreach($pendidikanTerakhirList as $listPendidikanTerakhir)
                 {
-                $selected = 'selected = "selected"';
+                    $selected = "";
+                    if("" == $listPendidikanTerakhir)
+                    {
+                    $selected = 'selected = "selected"';
+                    }
+                    echo '
+                    
+                    <option value="'.$listPendidikanTerakhir. '"' .$selected. '>' .$listPendidikanTerakhir. '</option>
+                    ';
                 }
-                echo '
-                
-                <option value="'.$listPendidikanTerakhir. '"' .$selected. '>' .$listPendidikanTerakhir. '</option>
-                ';
-            }
-            ?>
-        </select>
-        </div>
-    </div>  
-    <div class="col-sm-6">
-        <!-- text input -->
-        <div class="form-group">
-        <label>Pekerjaan Wali</label>
-        <select class="custom-select" id="selectPekerjaanWali" name="selectPekerjaanWali" required>
-            <option value="">--Pilih Pekerjaan--</option>
-            <?php
-            foreach($pekerjaanList as $listPekerjaan)
-            {
-                $selected = "";
-                if("" == $listPekerjaan)
+                ?>
+            </select>
+            </div>
+        </div>  
+        <div class="col-sm-6">
+            <!-- text input -->
+            <div class="form-group">
+            <label>Pekerjaan Wali</label>
+            <select class="custom-select" id="selectPekerjaanWali" name="selectPekerjaanWali" required>
+                <option value="">--Pilih Pekerjaan--</option>
+                <?php
+                foreach($pekerjaanList as $listPekerjaan)
                 {
-                $selected = 'selected = "selected"';
+                    $selected = "";
+                    if("" == $listPekerjaan)
+                    {
+                    $selected = 'selected = "selected"';
+                    }
+                    echo '
+                    
+                    <option value="'.$listPekerjaan. '"' .$selected. '>' .$listPekerjaan. '</option>
+                    ';
                 }
-                echo '
-                
-                <option value="'.$listPekerjaan. '"' .$selected. '>' .$listPekerjaan. '</option>
-                ';
-            }
-            ?>
-        </select>
-        </div>
-    </div>  
-</div>
-<div class="row">
-    <div class="col-sm-6">
-        <!-- text input -->
-        <div class="form-group">
-        <label>Jumlah Penghasilan Wali per Bulan*</label>
-        <select class="custom-select" id="selectPenghasilanWali" name="selectPenghasilanWali" required>
-            <option value="">--Pilih Jumlah Penghasilan--</option>
-            <?php
-            foreach($penghasilanList as $listPenghasilan)
-            {
-                $selected = "";
-                if("" == $listPenghasilan)
+                ?>
+            </select>
+            </div>
+        </div>  
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <!-- text input -->
+            <div class="form-group">
+            <label>Jumlah Penghasilan Wali per Bulan*</label>
+            <select class="custom-select" id="selectPenghasilanWali" name="selectPenghasilanWali" required>
+                <option value="">--Pilih Jumlah Penghasilan--</option>
+                <?php
+                foreach($penghasilanList as $listPenghasilan)
                 {
-                $selected = 'selected = "selected"';
+                    $selected = "";
+                    if("" == $listPenghasilan)
+                    {
+                    $selected = 'selected = "selected"';
+                    }
+                    echo '
+                    
+                    <option value="'.$listPenghasilan. '"' .$selected. '>' .$listPenghasilan. '</option>
+                    ';
                 }
-                echo '
-                
-                <option value="'.$listPenghasilan. '"' .$selected. '>' .$listPenghasilan. '</option>
-                ';
-            }
-            ?>
-        </select>
-        </div>
-    </div>  
-    <div class="col-sm-6">
-        <!-- text input -->
-        <div class="form-group">
-        <label>Nomor Handphone</label>
-        <input type="text" id="inputNomorHPWali" name="inputNomorHPWali"
-            class="form-control" placeholder="nomor handphone Wali" required>
-        </div>
-    </div>  
-</div>
+                ?>
+            </select>
+            </div>
+        </div>  
+        <div class="col-sm-6">
+            <!-- text input -->
+            <div class="form-group">
+            <label>Nomor Handphone</label>
+            <input type="text" id="inputNomorHPWali" name="inputNomorHPWali"
+                class="form-control" placeholder="nomor handphone Wali" required>
+            </div>
+        </div>  
+    </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <!-- text input -->
+            <div class="form-group">
+                <label>
+                    Email
+                    <small> masukkan email yang valid, karena akan digunakan untuk <em>login</em></small>
+                </label>
+                <div class="input-group mb-3">
+                    <input type="email" id="emailEmail" name="emailEmail"
+                    class="form-control" placeholder="email" required>
+                    <div class="input-group-prepend">
+                        <button type="button" class="btn btn-info" id="btnCheckEmail">Check</button>
+                    </div>
+                    </br>
+                </div> 
+                <div class="input-group mb-3" id="divEmailWali">
+                </div>   
+            </div>
+        </div>  
+    </div>
 </div>
 
 <div class="row">
@@ -167,7 +188,7 @@
             Alamat &nbsp;
         </label>
         <div class="icheck-primary d-inline">
-            <input type="checkbox" id="ckAlamatWali" name="ckAlamatWali" required>
+            <input type="checkbox" id="ckAlamatWali" name="ckAlamatWali" required pattern="[^']+">
             <label for="ckAlamatWali">  <small>checklist jika <em>sama dengan alamat calon santri</em></small>
             </label>
         </div>

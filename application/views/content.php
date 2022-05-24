@@ -1,6 +1,12 @@
 <?php
     if ($_GET['modul']=='home'){
-        include "Pages/Dashboard/DashboardAdmin.php"; 
+        if($this->session->userdata('loggedIn')['Role'] == 'Wali')
+        {
+            include "Pages/Dashboard/DashboardWali.php"; 
+        }
+        else{
+            include "Pages/Dashboard/DashboardAdmin.php"; 
+        }
     }
     //MASTER
     elseif ($_GET['modul']=='masterKaryawan'){

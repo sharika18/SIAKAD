@@ -4,14 +4,14 @@
         <div class="form-group">
         <label>Nama Lengkap Calon Santri*</label>
         <input type="text" id="inputNamaLengkapSantri" name="inputNamaLengkapSantri" 
-            class="form-control" placeholder="nama lengkap calon santri" required>
+            class="form-control" placeholder="nama lengkap calon santri" required pattern="[^']+">
         </div>
     </div>
     <div class="col-sm-6">
         <div class="form-group">
         <label>Nama Panggilan*</label>
         <input type="text" id="inputNamaPanggilan" name="inputNamaPanggilan"
-            class="form-control" placeholder="nama panggilan calon santri" required>
+            class="form-control" placeholder="nama panggilan calon santri" required pattern="[^']+">
         </div>
     </div>
 </div>
@@ -42,7 +42,7 @@
         <div class="form-group">
         <label>Tempat Lahir*</label>
         <input type="text" id="inputTempatLahirSantri" name="inputTempatLahirSantri"
-            class="form-control" placeholder="tempat lahir calon santri" required>
+            class="form-control" placeholder="tempat lahir calon santri" required pattern="[^']+">
         </div>
     </div>
     <div class="col-sm-3">
@@ -70,7 +70,7 @@
         <div class="form-group">
         <label>Asal Sekolah</label>
         <input type="text" id="inputAsalSekolah" name="inputAsalSekolah" 
-            class="form-control" placeholder="asal sekolah calon santri">
+            class="form-control" placeholder="asal sekolah calon santri" pattern="[^']+">
         </div>
     </div>
 </div>
@@ -132,7 +132,7 @@
         <div class="form-group">
         <label>Alamat</label>
         <textarea type="text" id="inputAlamatSantri" name="inputAlamatSantri"
-            class="form-control" rows="2" placeholder="alamat calon santri" required></textarea>
+            class="form-control" rows="2" placeholder="alamat calon santri" required pattern="[^']+"></textarea>
         </div>
     </div>
 </div>
