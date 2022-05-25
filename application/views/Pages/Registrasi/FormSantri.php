@@ -179,7 +179,7 @@
                 <span class="input-group-text">Celana</span>
                 </div>
                 <select class="custom-select" id="selectUkuranCelana" name="selectUkuranCelana" required>
-                <option value="">--Pilih Ukuran Baju--</option>
+                <option value="">--Pilih Ukuran Celana--</option>
                 <?php
                     foreach($ukuranBajuCelanaList as $listUkuranBajuCelana)
                     {
@@ -211,7 +211,7 @@
                 <span class="input-group-text">Jilbab</span>
                 </div>
                 <select class="custom-select" id="selectUkuranJilbab" name="selectUkuranJilbab" required>
-                <option value="">--Pilih Ukuran Baju--</option>
+                <option value="">--Pilih Ukuran Jilbab--</option>
                 <?php
                     foreach($ukuranJilbabList as $listUkuranJilbab)
                     {

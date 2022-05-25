@@ -61,7 +61,7 @@ class Santri extends Email
     //echo json_encode($getAllVwSantriDetail_get['data']);
     return $getAllVwSantriDetail_get;
   }
-
+  //CREATE ORANG TUA
   function createAyah()
   {
     $now = date('Y-m-d H:i:s');
@@ -139,7 +139,8 @@ class Santri extends Email
       'Pekerjaan'             => $this->input-> post('selectPekerjaanWali'),
       'PenghasilanPerBulan'   => $this->input-> post('selectPenghasilanWali'),
       'NomorHandphone'        => $this->input-> post('inputNomorHPWali'),
-      'Email'                 => $this->input-> post('emailEmail'),
+      'Alamat'                => $this ->input-> post('inputAlamatWali'),
+      'Email'                 => $this->input-> post('emailEmailWali'),
       'CreatedBy'             => $this->session->userdata('loggedIn')['userName'],
       'CreatedDate'           => $now,
       'ModifiedBy'            => $this->session->userdata('loggedIn')['userName'],
@@ -147,17 +148,74 @@ class Santri extends Email
 			'AR-KEY'        	      => $this->key,   
 		];
     $insert = $this->curl->simple_post($this->API.'/Santri/createOrangTua/', $data, array(CURLOPT_BUFFERSIZE => 10)); 
-    // if($insert)
-    // {
-    //     $this->session->set_flashdata('success',$this->successPost);
-    // }else
-    // {
-    //     $this->session->set_flashdata('error',$this->errorPost);
-    // }
-    //print_r($data);
-    //$this->load->view('media', $data);
+  }
+  //UPDATE ORANG TUA
+  function updateAyah()
+  {
+    $now = date('Y-m-d H:i:s');
+    $data = array(
+      'NIK'                   => $this->input-> post('inputNIKAyah'),
+      'NamaLengkap'           => $this->input-> post('inputNamaLengkapAyah'),
+      'TempatLahir'           => $this->input-> post('inputTempatLahirAyah'),
+      'TanggalLahir'          => $this->input-> post('dateTanggalLahirAyah'),
+      'PendidikanTerakhir'    => $this->input-> post('selectPendidikanAyah'),
+      'Pekerjaan'             => $this->input-> post('selectPekerjaanAyah'),
+      'PenghasilanPerBulan'   => $this->input-> post('selectPenghasilanAyah'),
+      'NomorHandphone'        => $this->input-> post('inputNomorHPAyah'),
+      'ModifiedBy'            => $this->session->userdata('loggedIn')['userName'],
+      'ModifiedDate'          => $now,
+			'AR-KEY'        	      => $this->key,
+    );
+    $update = $this->curl->simple_put($this->API.'/Santri/updateOrangTua/', $data, array(CURLOPT_BUFFERSIZE => 10)); 
   }
 
+  function updateIbu()
+  {
+    $now = date('Y-m-d H:i:s');
+    $data = array(
+      'NIK'                   => $this->input-> post('inputNIKIbu'),
+      'NamaLengkap'           => $this->input-> post('inputNamaLengkapIbu'),
+      'TempatLahir'           => $this->input-> post('inputTempatLahirIbu'),
+      'TanggalLahir'          => $this->input-> post('dateTanggalLahirIbu'),
+      'PendidikanTerakhir'    => $this->input-> post('selectPendidikanIbu'),
+      'Pekerjaan'             => $this->input-> post('selectPekerjaanIbu'),
+      'PenghasilanPerBulan'   => $this->input-> post('selectPenghasilanIbu'),
+      'NomorHandphone'        => $this->input-> post('inputNomorHPIbu'),
+      'ModifiedBy'            => $this->session->userdata('loggedIn')['userName'],
+      'ModifiedDate'          => $now,
+			'AR-KEY'        	      => $this->key,
+    );
+    $update = $this->curl->simple_put($this->API.'/Santri/updateOrangTua/', $data, array(CURLOPT_BUFFERSIZE => 10)); 
+  }
+
+  function updateWali()
+  {
+    $now = date('Y-m-d H:i:s');
+    $data = array(
+      'NIK'                   => $this->input-> post('inputNIKWali'),
+      'NamaLengkap'           => $this->input-> post('inputNamaLengkapWali'),
+      'TempatLahir'           => $this->input-> post('inputTempatLahirWali'),
+      'TanggalLahir'          => $this->input-> post('dateTanggalLahirWali'),
+      'PendidikanTerakhir'    => $this->input-> post('selectPendidikanWali'),
+      'Pekerjaan'             => $this->input-> post('selectPekerjaanWali'),
+      'PenghasilanPerBulan'   => $this->input-> post('selectPenghasilanWali'),
+      'NomorHandphone'        => $this->input-> post('inputNomorHPWali'),
+      'Alamat'                => $this ->input-> post('inputAlamatWali'),
+      'Email'                 => $this->input-> post('emailEmailWali'),
+      'ModifiedBy'            => $this->session->userdata('loggedIn')['userName'],
+      'ModifiedDate'          => $now,
+			'AR-KEY'        	      => $this->key,
+    );
+    $update = $this->curl->simple_put($this->API.'/Santri/updateOrangTua/', $data, array(CURLOPT_BUFFERSIZE => 10)); 
+    // if($update)
+    // {
+    //     $this->session->set_flashdata('success',$this->successPut);
+    // }else
+    // {
+    //     $this->session->set_flashdata('error',$this->errorPut);
+    // }
+    //redirect('Karyawan?modul=masterKaryawan&act=Tambah');
+  }
   function createSantri()
   {
     $now = date('Y-m-d H:i:s');
@@ -209,7 +267,7 @@ class Santri extends Email
 
     $data = [
 			'userName'          => $this->input-> post ('inputNamaLengkapWali'),
-      'email'             => $this->input-> post ('emailEmail'),
+      'email'             => $this->input-> post ('emailEmailWali'),
       'password'          => $this->input-> post ('dateTanggalLahirWali'),
       'NIK'               =>  $this->input-> post ('inputNIKWali'),
       'Role'              => 'Wali',
@@ -230,12 +288,12 @@ class Santri extends Email
       .$this -> input->post ('inputNamaLengkapWali')
       ."</b>, <br><br>Berikut ini Username & Password untuk masuk ke dalam aplikasi SIAKAD
       <br><br>
-      Username :".$this ->input-> post ('emailEmail')."
+      Username :".$this ->input-> post ('emailEmailWali')."
       <br>
       Password :".$this ->input-> post ('dateTanggalLahirWali')."
       Demikian disampaikan dan terima kasih.";
 
-      $this->sendMail($this ->input-> post ('emailEmail'), "", $subject, $message);
+      $this->sendMail($this ->input-> post ('emailEmailWali'), "", $subject, $message);
        
     }
 
@@ -248,7 +306,7 @@ class Santri extends Email
     $nikIbu = $this->input-> post('inputNIKIbu');
     $nikWali = $this->input-> post('inputNIKWali');
 
-    $dataAyah = $this->getOrangTuaByNIK($nikAyah);
+    $dataAyah = $this->getOrangTuaByNIK(11111111);
     if(empty($dataAyah))
     {
       echo "Ayah NULL";
@@ -267,10 +325,12 @@ class Santri extends Email
     {
       echo "Wali NULL";
       $this->createWali();
+    }else{
+      $this->updateWali();
     }
 
     
-    $email = $this -> input->post ('emailEmail');
+    $email = $this -> input->post ('emailEmailWali');
     if(empty($this->getUserByEmail($email)))
     {
       echo "Email NULL";

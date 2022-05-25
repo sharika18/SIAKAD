@@ -2,7 +2,8 @@
     $(document).ready(function(){
         showAllSantri();
 
-        function showAllSantri(){
+        function showAllSantri()
+        {
           
             $.ajax({
                 type  : 'ajax',
@@ -41,7 +42,8 @@
             });
         }
 
-        function getOrangTuaByNIK(varChoice){
+        function getOrangTuaByNIK(varChoice)
+        {
           //var inputID = '#inputNIKAyah';
           //ID
           var inputID = '#inputNIK'+varChoice;
@@ -52,6 +54,9 @@
           var pekerjaanID = '#selectPekerjaan'+varChoice;
           var penghasilanID = '#selectPenghasilan'+varChoice;
           var handphoneID = '#inputNomorHP'+varChoice;
+          var emailID = '#emailEmail'+varChoice;
+          var divID = '#divBiodata'+varChoice+' *';
+          //alert(divID);
 
           //SET VALUE
           var nikAyah = $(inputID).val();
@@ -89,7 +94,17 @@
                 $(pekerjaanID).val(pekerjaan);
                 $(penghasilanID).val(penghasilan);
                 $(handphoneID).val(noHandphone);
-                $('#emailEmail').val(email);
+                $(emailID).val(email);
+                $(divID).prop("disabled", true);
+
+                $(emailID).prop("disabled", false);
+                $("#btnTambah").prop("disabled", true);
+                if(email != '')
+                {
+                  //alert("email tidak kosong");
+                  $(emailID).prop("disabled", true);
+                  $("#btnTambah").prop("disabled", false);
+                }
             },
             error : function(data){
                 $(namaID).val(namaLengkap);
@@ -99,17 +114,23 @@
                 $(pekerjaanID).val(pekerjaan);
                 $(penghasilanID).val(penghasilan);
                 $(handphoneID).val(noHandphone);
-                $('#emailEmail').val("");
+                $(emailID).val(email);
+                $(divID).prop("disabled", false);
+
+                $("#emailEmailWali").prop("disabled", false);
+                $("#btnTambah").prop("disabled", true);
             }
 
           });
         }
-        document.getElementById("btnNIKAyah").addEventListener("click", function(){getOrangTuaByNIK('Ayah');});
-        document.getElementById("btnNIKIbu").addEventListener("click", function(){getOrangTuaByNIK('Ibu');});
-        document.getElementById("btnNIKWali").addEventListener("click", function(){getOrangTuaByNIK('Wali');});
-        
+
         function saveSantri()
         {
+          
+          $('#divBiodataAyah *').prop("disabled", false);
+          $('#divBiodataIbu *').prop("disabled", false);
+          $('#divBiodataWali *').prop("disabled", false);
+
           var inputNIKAyah          = $('#inputNIKAyah').val();
           var inputNamaLengkapAyah  = $('#inputNamaLengkapAyah').val();
           var inputTempatLahirAyah  = $('#inputTempatLahirAyah').val();
@@ -135,8 +156,9 @@
           var selectPendidikanWali  = $('#selectPendidikanWali').val();
           var selectPekerjaanWali   = $('#selectPekerjaanWali').val();
           var selectPenghasilanWali = $('#selectPenghasilanWali').val();
+          var inputAlamatWali       = $('#inputAlamatWali').val();
           var inputNomorHPWali      = $('#inputNomorHPWali').val();
-          var emailEmail            = $('#emailEmail').val();
+          var emailEmailWali        = $('#emailEmailWali').val();
 
           var inputNIS                = $('#inputNIS').val();
           var inputNamaLengkapSantri  = $('#inputNamaLengkapSantri').val();
@@ -205,7 +227,8 @@
                   selectPekerjaanWali:selectPekerjaanWali ,  
                   selectPenghasilanWali:selectPenghasilanWali ,  
                   inputNomorHPWali:inputNomorHPWali ,  
-                  emailEmail:emailEmail
+                  inputAlamatWali:inputAlamatWali ,  
+                  emailEmailWali:emailEmailWali
 
                 },
                 success: function(data){
@@ -238,7 +261,8 @@
                   $('#selectPekerjaanWali').val("");
                   $('#selectPenghasilanWali').val("");
                   $('#inputNomorHPWali').val("");
-                  $('#emailEmail').val("");
+                  $('#inputAlamatWali').val("");
+                  $('#emailEmailWali').val("");
 
                   $('#inputNIS').val("");
                   $('#inputNamaLengkapSantri').val("");
@@ -263,30 +287,11 @@
             return false;
 
         }
-        document.getElementById("btnSave").addEventListener("click", function(){saveSantri();});
-
-        $("input[name='ckBiodataWali']").change(function(){
-          if($(this).val() == '1')
-          {
-              $('#inputNIKWali').val($('#inputNIKAyah').val());
-              getOrangTuaByNIK('Wali');
-              $("#divBiodataWali *").prop("disabled", true);
-          }
-          else if($(this).val() == '2')
-          {
-              $('#inputNIKWali').val($('#inputNIKIbu').val());
-              getOrangTuaByNIK('Wali');
-              $("#divBiodataWali *").prop("disabled", true);
-          }
-          else
-          {
-            $("#divBiodataWali *").prop("disabled", false);
-          }
-        });
-
-        function getUserByEmail(){
+        
+        function getUserByEmail()
+        {
           //SET VALUE
-          var email = $('#emailEmail').val();
+          var email = $('#emailEmailWali').val();
           var varNIK = $('#inputNIKWali').val();
           $.ajax({
             type  : 'ajax',
@@ -305,16 +310,66 @@
                         '</font>'
                         ;
                         
-                        $('#emailEmail').val("");
+                        $('#emailEmailWali').val("");
                     }
                 }
                 $('#divEmailWali').html(html);
+                $('#btnTambah').prop("disabled", true);
             },
             error : function(data){
+              $('#divEmailWali').html('');
+              $('#btnTambah').prop("disabled", false);
             }
 
           });
         }
+        
+        $("input[name='ckBiodataWali']").change(function(){
+
+          var email = '';
+          $("#divBiodataWali *").prop("disabled", false);
+          $("#emailEmailWali").prop("disabled", false);
+          $("#inputNIKWali").prop("disabled", false);
+          $("#btnTambah").prop("disabled", true);
+          $('#divEmailWali').html('');
+          resetValues();
+
+          if($(this).val() == '1')
+          {
+              valuesBiodataAyah();
+              email = $('#emailEmailAyah').val();
+              $("#divBiodataWali *").prop("disabled", true);
+              $("#inputNIKWali").prop("disabled", true);
+          }
+          else if($(this).val() == '2')
+          {
+              valuesBiodataIbu();
+              email = $('#emailEmailIbu').val();
+              $("#divBiodataWali *").prop("disabled", true);
+              $("#inputNIKWali").prop("disabled", true);
+          }
+
+          if(email != '')
+          {
+            $("#emailEmailWali").prop("disabled", true);
+            $("#btnTambah").prop("disabled", false);
+          }
+          setValueBiodataWali();
+
+        });
+
+        $("input[name='emailEmailWali']").change(function(){
+          //$("#btnTambah").prop("disabled", true);
+          getUserByEmail();
+        });
+
+
+        //ADD EVENT LISTENER
+        document.getElementById("inputNIKAyah").addEventListener("change", function(){getOrangTuaByNIK('Ayah');});
+        document.getElementById("inputNIKIbu").addEventListener("change", function(){getOrangTuaByNIK('Ibu');});
+        document.getElementById("inputNIKWali").addEventListener("change", function(){getOrangTuaByNIK('Wali');});
+        
+        document.getElementById("btnSave").addEventListener("click", function(){saveSantri();});
         document.getElementById("btnCheckEmail").addEventListener("click", function(){getUserByEmail();});
 
     });

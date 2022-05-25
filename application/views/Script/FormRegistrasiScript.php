@@ -8,6 +8,7 @@ var varPendidikan="";
 var varPekerjaan="";
 var varPenghasilan="";
 var varNomorHP="";
+var varEmail = "";
 
 function valuesBiodataAyah(){
     varNamaLengkap = document.getElementById("inputNamaLengkapAyah").value;
@@ -18,6 +19,7 @@ function valuesBiodataAyah(){
     varPekerjaan = document.getElementById("selectPekerjaanAyah").value;
     varPenghasilan = document.getElementById("selectPenghasilanAyah").value;
     varNomorHP = document.getElementById("inputNomorHPAyah").value;
+    varEmail = document.getElementById("emailEmailAyah").value;
 };
 
 function valuesBiodataIbu(){
@@ -29,6 +31,7 @@ function valuesBiodataIbu(){
     varPekerjaan = document.getElementById("selectPekerjaanIbu").value;
     varPenghasilan = document.getElementById("selectPenghasilanIbu").value;
     varNomorHP = document.getElementById("inputNomorHPIbu").value;
+    varEmail = document.getElementById("emailEmailIbu").value;
 };
 function resetValues(){
     varNamaLengkap="";
@@ -39,6 +42,7 @@ function resetValues(){
     varPekerjaan="";
     varPenghasilan="";
     varNomorHP="";
+    varEmail = "";
 };
 
 function setValueBiodataWali()
@@ -51,6 +55,7 @@ function setValueBiodataWali()
     document.getElementById("selectPekerjaanWali").value = varPekerjaan;
     document.getElementById("selectPenghasilanWali").value = varPenghasilan;
     document.getElementById("inputNomorHPWali").value = varNomorHP;
+    document.getElementById("emailEmailWali").value = varEmail;
 }
 
 $(document).ready(function () {

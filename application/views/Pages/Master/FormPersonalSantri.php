@@ -45,19 +45,19 @@
             
             <div id="biodata-santri" class="content" role="tabpanel" aria-labelledby="biodata-santri-trigger">                    
                 <div class="card-body">
-                    <div class="row">
-                    <div class="col-sm-12">
-                        <div class="form-group">
-                        <label for="exampleInputFile">Bukti Pembayaran(File berbentuk Gambar/Photo/PDF)</label>
-                        <div class="input-group">
-                            <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="fileBuktiPembayaran" name="fileBuktiPembayaran" required> 
-                            <label class="custom-file-label" for="fileBuktiPembayaran">Choose file</label>
+                    <!-- <div class="row">
+                        <div class="col-sm-12">
+                            <div class="form-group">
+                            <label for="exampleInputFile">Bukti Pembayaran(File berbentuk Gambar/Photo/PDF)</label>
+                            <div class="input-group">
+                                <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="fileBuktiPembayaran" name="fileBuktiPembayaran" required> 
+                                <label class="custom-file-label" for="fileBuktiPembayaran">Choose file</label>
+                                </div>
+                            </div>
                             </div>
                         </div>
-                        </div>
-                    </div>
-                    </div>
+                    </div> -->
                     <?php 
                     include dirname(__DIR__)."/Registrasi/FormSantri.php";
                     ?>
@@ -92,11 +92,11 @@
                     include dirname(__DIR__)."/Registrasi/FormWali.php";
                     ?>
                 </div>
-                <button type="submit" class="btnSubmit btn btn-success float-right" data-toggle="modal">
-                <?php 
-                    $alertBoxSubmitMessage = "Apakah data formulir tersebut sudah benar?";
-                    echo $_GET['act'] 
-                ?>
+                <button type="submit" type="button" id="btnTambah" class="btnSubmit btn btn-success float-right" data-toggle="modal" disabled>
+                    <?php 
+                        $alertBoxSubmitMessage = "Apakah data formulir tersebut sudah benar?";
+                        echo $_GET['act'] 
+                    ?>
                 </button>
                 <button class="btn btn-success" onclick="stepper.previous()">Previous</button>
             </div>

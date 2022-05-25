@@ -32,21 +32,23 @@
         </div>
     </div>
 </div>
+<div class="row">  
+    <div class="col-sm-6">
+        <div class="form-group">
+            <label>Nomor Induk Kependudukan (NIK)*</label>
+            <div class="input-group mb-3">
+                <input type="number" onKeyPress="if(this.value.length==16) return false;" id="inputNIKWali" name="inputNIKWali"
+                    class="form-control" placeholder="NIK Wali" required>
+                <!-- <div class="input-group-prepend">
+                    <button type="button" class="btn btn-info" id="btnNIKWali">Check</button>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</div>
 
 <div id="divBiodataWali">
     <div class="row">  
-        <div class="col-sm-6">
-            <div class="form-group">
-                <label>Nomor Induk Kependudukan (NIK)*</label>
-                <div class="input-group mb-3">
-                    <input type="number" onKeyPress="if(this.value.length==16) return false;" id="inputNIKWali" name="inputNIKWali"
-                        class="form-control" placeholder="NIK Wali" required>
-                    <div class="input-group-prepend">
-                        <button type="button" class="btn btn-info" id="btnNIKWali">Check</button>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div class="col-sm-6">
             <div class="form-group">
             <label>Nama Lengkap*</label>
@@ -54,6 +56,14 @@
                 class="form-control" placeholder="nama lengkap Wali" pattern="[^']+">
             </div>
         </div>
+        <div class="col-sm-6">
+            <!-- text input -->
+            <div class="form-group">
+            <label>Nomor Handphone</label>
+            <input type="text" id="inputNomorHPWali" name="inputNomorHPWali"
+                class="form-control" placeholder="nomor handphone Wali" required>
+            </div>
+        </div>  
     </div>
     <div class="row">  
         <div class="col-sm-6">
@@ -149,38 +159,23 @@
             </select>
             </div>
         </div>  
-        <div class="col-sm-6">
-            <!-- text input -->
-            <div class="form-group">
-            <label>Nomor Handphone</label>
-            <input type="text" id="inputNomorHPWali" name="inputNomorHPWali"
-                class="form-control" placeholder="nomor handphone Wali" required>
-            </div>
-        </div>  
-    </div>
-    <div class="row">
-        <div class="col-sm-6">
-            <!-- text input -->
-            <div class="form-group">
-                <label>
-                    Email
-                    <small> masukkan email yang valid, karena akan digunakan untuk <em>login</em></small>
-                </label>
-                <div class="input-group mb-3">
-                    <input type="email" id="emailEmail" name="emailEmail"
-                    class="form-control" placeholder="email" required>
-                    <div class="input-group-prepend">
-                        <button type="button" class="btn btn-info" id="btnCheckEmail">Check</button>
-                    </div>
-                    </br>
-                </div> 
-                <div class="input-group mb-3" id="divEmailWali">
-                </div>   
-            </div>
-        </div>  
     </div>
 </div>
 
+<div class="row">
+    <div class="col-sm-6">
+        <!-- text input -->
+        <div class="form-group">
+            <label>
+                Email
+                <small> masukkan email yang valid, karena akan digunakan untuk <em>login</em></small>
+            </label>
+            <input type="email" id="emailEmailWali" name="emailEmailWali"
+                class="form-control" placeholder="email" required>
+            <div id="divEmailWali"></div>   
+        </div>
+    </div>  
+</div>
 <div class="row">
     <div class="col-sm-12">
         <div class="form-group">
