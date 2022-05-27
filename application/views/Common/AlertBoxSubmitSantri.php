@@ -5,9 +5,11 @@
                 $("#modalSubmit").modal();
                 var act = "<?php echo $_GET['act'] ?>";
                 var actValue = act.toLowerCase();
+                var deskripsi = $('.inputDeskripsi').val();
                 var message = "";
                     message +=
                         "<p><?php echo $alertBoxSubmitMessage ?></p>";
+                    message += "<b>"+deskripsi+"</b>";
 
                 $("#modalSubmitContent").empty();
                 $("#modalSubmitContent").append(message);
@@ -21,7 +23,7 @@
     <div class="modal-dialog">
         <div class="modal-content bg-default">
             <div class="modal-header">
-                <h4 class="modal-title"><?php echo $_GET['act'] ?> Data</h4>
+                <h4 class="modal-title" id="modalSubmitTittle">Konfirmasi</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
@@ -35,7 +37,7 @@
             <div class="modal-footer justify-content-between">
                 <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary" id="btnSave" data-dismiss="modal">
-                    <?php echo $_GET['act'] ?>
+                    Simpan
                 </button>
             </div>
         </div>

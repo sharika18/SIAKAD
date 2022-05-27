@@ -306,7 +306,7 @@ class Santri extends Email
     $nikIbu = $this->input-> post('inputNIKIbu');
     $nikWali = $this->input-> post('inputNIKWali');
 
-    $dataAyah = $this->getOrangTuaByNIK(11111111);
+    $dataAyah = $this->getOrangTuaByNIK($nikAyah);
     if(empty($dataAyah))
     {
       echo "Ayah NULL";

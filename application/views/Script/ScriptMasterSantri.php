@@ -12,6 +12,12 @@
                 dataType : 'json',
                 success : function(data){
                   //alert(data.length);
+                    data.sort(function(a, b)
+                    {
+                        var aName = a.CreatedDate.toLowerCase();
+                        var bName = b.CreatedDate.toLowerCase(); 
+                        return ((aName > bName) ? -1 : ((aName < bName) ? 1 : 0));
+                    });
                     var html = '';
                     var hrefEdit = '<?php echo base_url()?>'+'Karyawan/getKaryawanByNIP?modul=masterKaryawan&act=Edit';
                     var i;
@@ -232,7 +238,8 @@
 
                 },
                 success: function(data){
-                  toastr.success("Data santri berhasil disimpan");
+                  var $successMessage = "<b>"+inputNamaLengkapSantri+"</b> berhasil disimpan";
+                  toastr.success($successMessage);
                   showAllSantri();
 
                   $('#inputNIKAyah').val("");
@@ -281,7 +288,8 @@
                   $('#selectUkuranJilbab').val("");
                 },
                 error: function(data){
-                  alert('error');
+                  var $errorMessage = "<b>"+inputNamaLengkapSantri+"</b> gagal disimpan";
+                  toastr.error($errorMessage);
                 }
             });
             return false;

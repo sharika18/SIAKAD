@@ -15,6 +15,9 @@
     elseif ($_GET['modul']=='masterSantri'){
         include "Pages/Master/MasterSantri.php"; 
     }
+    elseif ($_GET['modul']=='masterAsrama'){
+        include "Pages/Master/MasterAsrama.php"; 
+    }
     // elseif ($_GET['modul']=='masterBiaya'){
     //     include "Pages/Master/MasterBiaya.php"; 
     // }
