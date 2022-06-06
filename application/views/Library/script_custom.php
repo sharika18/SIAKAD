@@ -37,26 +37,19 @@
       "paging": true,
       "columnDefs": [
             {
-                "targets": [ 0],
+                "targets": [0],
                 "visible": false,
                 "searchable": false
             }
         ]
     });
 
-    $("#dgMasterKaryawan").DataTable({
-      "destroy": true,
-      "responsive": true,
-      "autoWidth": false,
-      "paging": true,
-      "columnDefs": [
-            {
-                "targets": [ 0],
-                "visible": false,
-                "searchable": false
-            }
-        ]
-    });
+    // $("#dgMasterKaryawan").DataTable({
+    //   "destroy": true,
+    //   "responsive": true,
+    //   "autoWidth": false,
+    //   "paging": true
+    // });
 
     $('#formSubmit').validate({
         rules: {
