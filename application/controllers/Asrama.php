@@ -23,10 +23,11 @@ class Asrama extends CI_Controller{
    
     if($getAllAsrama_get)
     {
-      echo json_encode($getAllAsrama_get['data']);
+      $data['dataAsrama'] = $getAllAsrama_get['data'];
+      echo json_encode($getAllAsrama_get);
     }
     //echo json_encode($getAllVwSantriDetail_get['data']);
-    return $getAllAsrama_get;
+    return $data['dataAsrama'];
   }
 
   function getAllVwKamarDetail()
@@ -44,17 +45,9 @@ class Asrama extends CI_Controller{
     return $getAllVwKamarDetail_get;
   }
 
-  function getData()
-  {
-    $data = null;
-    return $data;
-  }
-
   function index()
   {
-    $data = $this->getData();
-    //print_r($data);
-    $this->load->view('media', $data);
+    $this->load->view('media');
   }
 
   function TambahAsrama()
@@ -83,7 +76,7 @@ class Asrama extends CI_Controller{
   {
     $now = date('Y-m-d H:i:s');
     $data = array(
-      'AsramaID'                  => $this->input-> post ('inputIDD'),
+      'AsramaID'                  => $this->input-> post ('inputID'),
       'NamaAsrama'                => $this->input-> post ('inputNamaAsrama'),
       'NIPPenanggungJawabAsrama'  => $this->input-> post ('selectNIPPenanggungJawab'),
       'ModifiedBy'                => $this->session->userdata('loggedIn')['userName'], //belum diset

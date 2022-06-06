@@ -1,10 +1,8 @@
 <script>
     $(function () {
         $(".btnSubmit").click(function () {
-            if ($( "#formSubmit" ).valid()) {
+            if ($("#formSubmit" ).valid()) {
                 $("#modalSubmit").modal();
-                var act = "<?php echo $_GET['act'] ?>";
-                var actValue = act.toLowerCase();
                 var deskripsi = $('.inputDeskripsi').val();
                 var message = "";
                     message +=
@@ -23,7 +21,7 @@
     <div class="modal-dialog">
         <div class="modal-content bg-default">
             <div class="modal-header">
-                <h4 class="modal-title" id="modalSubmitTittle">Konfirmasi</h4>
+                <h4 class="modal-title">Konfirmasi</h4>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>

@@ -18,6 +18,12 @@
     elseif ($_GET['modul']=='masterAsrama'){
         include "Pages/Master/MasterAsrama.php"; 
     }
+    elseif ($_GET['modul']=='masterKamar'){
+        include "Pages/Master/MasterKamar.php"; 
+    }
+    elseif ($_GET['modul']=='masterAnggotaKamar'){
+        include "Pages/Master/MasterAnggotaKamar.php"; 
+    }
     // elseif ($_GET['modul']=='masterBiaya'){
     //     include "Pages/Master/MasterBiaya.php"; 
     // }
