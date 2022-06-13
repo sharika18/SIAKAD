@@ -12,8 +12,29 @@ class AnggotaKamar extends CI_Controller{
     {
       redirect('Welcome'); 
     }
-  }
+  } 
   
+  function getNamaAsramaByKamarID($KamarID = '')
+  {
+    
+    $data = array(
+      'AR-KEY'  => $this->key,
+      'KamarID'   => $KamarID
+    );
+
+    $getNamaAsramaByKamarID_get = json_decode($this -> curl -> simple_get ($this->API.'/KelasAsrama/getNamaAsramaByKamarID/', $data, array(CURLOPT_BUFFERSIZE => 10)),true); 
+    
+    if($getNamaAsramaByKamarID_get)
+    {
+      $data['VwKamarDetail'] = $getNamaAsramaByKamarID_get['data'];
+      echo json_encode($getNamaAsramaByKamarID_get);
+    }
+    else{
+      echo json_encode($this->emptyData);
+    }
+    //return $data['VwKamarDetail'];
+  }
+
   function getAllVwKamarDetailByAsramaID($AsramaID = '')
   {
     $data = array(

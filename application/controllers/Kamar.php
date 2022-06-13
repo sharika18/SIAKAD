@@ -16,17 +16,23 @@ class Kamar extends CI_Controller{
   
   function getAllVwKamarDetailByAsramaID($AsramaID = '')
   {
+    
     $data = array(
       'AR-KEY'  => $this->key,
       'AsramaID'   => $AsramaID
     );
+
     $getAllVwKamarDetailByAsramaID_get = json_decode($this -> curl -> simple_get ($this->API.'/KelasAsrama/getAllVwKamarDetailByAsramaID/', $data, array(CURLOPT_BUFFERSIZE => 10)),true); 
-   
+    
     if($getAllVwKamarDetailByAsramaID_get)
     {
-      echo json_encode($getAllVwKamarDetailByAsramaID_get['data']);
+      $data['VwKamarDetail'] = $getAllVwKamarDetailByAsramaID_get['data'];
+      echo json_encode($getAllVwKamarDetailByAsramaID_get);
     }
-    return $getAllVwKamarDetailByAsramaID_get;
+    else{
+      echo json_encode($this->emptyData);
+    }
+    //return $data['VwKamarDetail'];
   }
 
   function index()

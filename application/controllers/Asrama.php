@@ -25,6 +25,8 @@ class Asrama extends CI_Controller{
     {
       $data['dataAsrama'] = $getAllAsrama_get['data'];
       echo json_encode($getAllAsrama_get);
+    }else{
+      echo json_encode($this->emptyData);
     }
     //echo json_encode($getAllVwSantriDetail_get['data']);
     return $data['dataAsrama'];

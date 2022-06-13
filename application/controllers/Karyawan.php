@@ -22,6 +22,8 @@ class Karyawan extends CI_Controller{
     {
       $data['VwKaryawanDetail'] = $getVwKaryawanDetail_get['data'];
       echo json_encode($getVwKaryawanDetail_get);
+    }else{
+      echo json_encode($this->emptyData);
     }
     return $data['VwKaryawanDetail'];
   }
